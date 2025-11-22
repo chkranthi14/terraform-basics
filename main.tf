@@ -1,6 +1,18 @@
 provider "aws" {
 }
 
+terraform {
+ backend "s3" {
+  bucket = "cgit-teraform-bkd"
+  key = "terraform.tfstate"
+  region = "ap-south-1"
+  encrypt = true
+  #use_lockfile = true
+
+
+}
+
+}
 resource "aws_vpc" "Demovpc" {
   cidr_block = var.vpccidr
   tags = {
